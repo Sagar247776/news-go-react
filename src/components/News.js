@@ -2,310 +2,90 @@ import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 
 export class News extends Component {
-  articles = [
-    {
-      source: { id: null, name: "TMZ" },
-      author: "TMZ Staff",
-      title:
-        "Hank Williams Jr.'s Son Claims Dad Put Him in Conservatorship, He Wants Out - TMZ",
-      description:
-        "Hank Williams Jr.'s son wants some of what Britney Spears has -- freedom from a conservatorship ... one he alleges his father quietly placed him in 18 months ago.",
-      url: "https://www.tmz.com/2022/02/05/hank-williams-jr-son-sam-williams-conservatorship-wants-out/",
-      urlToImage:
-        "https://imagez.tmz.com/image/83/16by9/2022/02/03/83987655dc1244b28139e1d891c923d9_xl.jpg",
-      publishedAt: "2022-02-05T09:00:00Z",
-      content:
-        "Hank Williams Jr.'s son wants some of what Britney Spears has -- freedom from a conservatorship ... one he alleges his father quietly placed him in 18 months ago.\r\nSam Williams -- himself a country s… [+2171 chars]",
-    },
-    {
-      source: { id: null, name: "Vt.edu" },
-      author: null,
-      title:
-        "Secure in place ended; Blacksburg Police investigating incident - Virginia Tech Daily",
-      description:
-        "Secure in place ended; Blacksburg Police investigating incident - Virginia Tech Daily",
-      url: "https://vtx.vt.edu/articles/2022/02/unirel-feb5-release.html",
-      urlToImage:
-        "https://vtx.vt.edu/content/vtx_vt_edu/en/articles/2022/02/unirel-feb5-release.transform/l-medium/image.jpg",
-      publishedAt: "2022-02-05T08:16:22Z",
-      content:
-        "5:31 a.m.\r\nFrom Blacksburg Police: This incident continues to be a complex, ongoing case that has shifted to a homicide investigation. There were five individuals that were injured in the shooting, f… [+998 chars]",
-    },
-    {
-      source: { id: null, name: "CNET" },
-      author: "Oscar Gonzalez",
-      title:
-        "More than 70 episodes of Joe Rogan's podcast are no longer on Spotify - CNET",
-      description:
-        "The apparent removals come as Rogan's podcast continues to generate controversy.",
-      url: "https://www.cnet.com/tech/services-and-software/more-than-70-episodes-of-joe-rogans-podcast-are-no-longer-on-spotify/",
-      urlToImage:
-        "https://www.cnet.com/a/img/c61wevJ8scv2lFFY7G2ZWehgo18=/1200x630/2022/02/05/5ee82d6b-8382-4241-9abb-3b45d99c9682/gettyimages-1367949987.jpg",
-      publishedAt: "2022-02-05T08:10:51Z",
-      content:
-        "Rogan podcast fans have fewer episodes to listen to now on Spotify.\r\nGetty Images\r\nSpotify quietly removed roughly 70 episodes of Joe Rogan's podcast after expressing support for the comedian, who's … [+2373 chars]",
-    },
-    {
-      source: { id: "the-washington-post", name: "The Washington Post" },
-      author: "Isabelle Khurshudyan, Amy Cheng",
-      title:
-        "U.S. warns China risks embarrassment if it backs Russia on Ukraine - The Washington Post",
-      description:
-        "As the war of words between the United States and Russia over Ukraine continues, German Chancellor Olaf Scholz will visit Washington, Kyiv and Moscow this month.",
-      url: "https://www.washingtonpost.com/world/2022/02/05/ukraine-russia-nato-putin-germany/",
-      urlToImage:
-        "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/WKJZ5SEFYUI6ZFI4DYGMG4R6KM.jpg&w=1440",
-      publishedAt: "2022-02-05T08:05:35Z",
-      content:
-        "Ukraine was not mentioned in a sweeping joint document issued by Moscow and Beijing that framed their geopolitical ambitions experts suggest the omission means China wont give potential Russian aggre… [+5017 chars]",
-    },
-    {
-      source: { id: null, name: "Mavs Moneyball" },
-      author: "Tim Yeager",
-      title:
-        "3 takeaways from the Mavericks 107-98 win against the 76ers - Mavs Moneyball",
-      description:
-        "Dallas back in the win column after back to back bad losses",
-      url: "https://www.mavsmoneyball.com/2022/2/5/22918811/3-takeaways-from-the-mavericks-107-98-win-against-the-76ers",
-      urlToImage:
-        "https://cdn.vox-cdn.com/thumbor/xoCMRw9SbgMKXSoIjdKkN54WqTQ=/0x532:7423x4418/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/23220036/usa_today_17620248.jpg",
-      publishedAt: "2022-02-05T06:36:43Z",
-      content:
-        "The Dallas Mavericks defeated the Philadelphia 76ers at home in a thriller, winning 107-98. Luka Doncic had 33 points, 13 rebounds, and 15 assists in the win recording his 44th triple-double of his c… [+4081 chars]",
-    },
-    {
-      source: { id: null, name: "New York Post" },
-      author: "Patrick Reilly",
-      title:
-        "Trump blasts Pence for calling him 'wrong,' for suggesting VP could overturn election - New York Post ",
-      description:
-        "Trump bashed his vice president ahead of the Capitol Hill riot for not having the “courage” to reject certified electors from Arizona, Georgia and Pennsylvania for then-President-elect Joe Biden.…",
-      url: "https://nypost.com/2022/02/05/donald-trump-responds-to-mike-pences-rejection-of-overturning-election/",
-      urlToImage:
-        "https://nypost.com/wp-content/uploads/sites/2/2022/02/pence-trump-077.jpg?quality=90&strip=all&w=1024",
-      publishedAt: "2022-02-05T06:33:00Z",
-      content:
-        "Former President Donald Trump shot back at his former Vice President Mike Pence on Friday after Pence said that Trump was wrong in claiming he had the ability as vice president to overturn the 2020 e… [+2940 chars]",
-    },
-    {
-      source: { id: null, name: "New York Times" },
-      author: "Vivian Yee, Dan Bilefsky, Aida Alami",
-      title:
-        "Rescuers in Morocco Race to Save 5-Year-Old Stuck in Well for Days - The New York Times",
-      description:
-        "People in the region were glued to the rescue effort on television and online, eager for some good news at a time when many have been buffeted by Covid pandemic gloom.",
-      url: "https://www.nytimes.com/2022/02/04/world/africa/morocco-child-rescue.html",
-      urlToImage:
-        "https://static01.nyt.com/images/2022/02/04/world/04Morocco-Resc01/04Morocco-Resc01-facebookJumbo-v2.jpg",
-      publishedAt: "2022-02-05T05:27:00Z",
-      content:
-        "I pray and beg God that he comes out of that well alive and safe, his mother, Wassima Kharchich, told 2M, a Moroccan television network. Please God, ease my pain and his, in that hole of dust.\r\nAnd t… [+1165 chars]",
-    },
-    {
-      source: { id: null, name: "Daily Beast" },
-      author: "Cheyenne Roundtree",
-      title:
-        "Kanye West Just Blew Up His Divorce From Kim Kardashian By Involving Their Kids - The Daily Beast",
-      description:
-        "Ever since Kim was linked to Pete Davidson, Kanye has done everything in his power to ensure his ex-wife doesn’t outshine him. But he may have taken it too far.",
-      url: "https://www.thedailybeast.com/kanye-west-just-blew-up-his-divorce-from-kim-kardashian-by-involving-their-kids",
-      urlToImage:
-        "https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1688,w_3000,x_0,y_0/dpr_2.0/c_limit,w_740/fl_lossy,q_auto/v1644025516/220204-kim-kanye-antics-tease-01_cwfrly",
-      publishedAt: "2022-02-05T04:42:55Z",
-      content:
-        "As of late, Kanye West seems to have one mission and one mission only: to get a reaction out of his estranged wife, Kim Kardashian. And on Friday morning, he finally got his wish.\r\nThe rapper went on… [+7890 chars]",
-    },
-    {
-      source: { id: "cnn", name: "CNN" },
-      author: "Shawna Mizelle, CNN",
-      title:
-        "Several establishment Republicans push back on party's punishment of Cheney and Kinzinger - CNN",
-      description:
-        "Several establishment Republicans, including 2012 presidential nominee Mitt Romney, are publicly criticizing their party's decision to censure GOP Reps. Liz Cheney and Adam Kinzinger over their service on the House select committee investigating the January 6…",
-      url: "https://www.cnn.com/2022/02/04/politics/romney-gop-cheney-kinzinger-censure-vote/index.html",
-      urlToImage:
-        "https://cdn.cnn.com/cnnnext/dam/assets/220204115725-romney-cheney-kinzinger-split-super-tease.jpg",
-      publishedAt: "2022-02-05T04:24:00Z",
-      content:
-        "Washington (CNN)Several establishment Republicans, including 2012 presidential nominee Mitt Romney, are publicly criticizing their party's decision to censure GOP Reps. Liz Cheney and Adam Kinzinger … [+1881 chars]",
-    },
-    {
-      source: { id: null, name: "The Guardian" },
-      author: "Guardian staff reporter",
-      title:
-        "North Carolina supreme court strikes down state’s new redistricting maps - The Guardian",
-      description:
-        "In a blow to the Republican legislature, the court rejected the maps saying they infringed upon the fundamental right to vote",
-      url: "https://amp.theguardian.com/us-news/2022/feb/04/north-carolina-supreme-court-redistricting-maps",
-      urlToImage: null,
-      publishedAt: "2022-02-05T04:04:00Z",
-      content:
-        "North CarolinaIn a blow to the Republican legislature, the court rejected the maps saying they infringed upon the fundamental right to vote\r\nA divided North Carolina supreme court struck down the sta… [+5187 chars]",
-    },
-    {
-      source: { id: "reuters", name: "Reuters" },
-      author: null,
-      title:
-        "Minneapolis mayor suspends no-knock warrants after police killing of Black man - Reuters",
-      description:
-        "Minneapolis Mayor Jacob Frey announced on Friday a moratorium on no-knock warrants after police fatally shot a 22-year-old Black man during a raid on an apartment.",
-      url: "https://www.reuters.com/world/us/minneapolis-police-releases-video-swat-team-shooting-dead-armed-black-man-2022-02-04/",
-      urlToImage:
-        "https://www.reuters.com/resizer/LHBpeM8gZStbIUI88Xg1acKAZ7E=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/N54NTIXR65KPFODYIVOLDSRVX4.jpg",
-      publishedAt: "2022-02-05T04:02:00Z",
-      content:
-        "Feb 4 (Reuters) - Minneapolis Mayor Jacob Frey announced on Friday a moratorium on no-knock warrants after police fatally shot a 22-year-old Black man during a raid on an apartment.\r\nThe Minneapolis … [+3820 chars]",
-    },
-    {
-      source: { id: null, name: "New York Times" },
-      author: "Jesus Jiménez, Sophie Kasakove",
-      title:
-        "A Tenacious Winter Storm Moves Across the Northeast - The New York Times",
-      description:
-        "The three-day storm left grounded planes and power outages across a 2,000-mile stretch of the country. A fatal crash in Texas stranded drivers for 10 hours on an icy highway.",
-      url: "https://www.nytimes.com/2022/02/04/us/winter-storm-snow-ice-northeast.html",
-      urlToImage:
-        "https://static01.nyt.com/images/2022/02/04/us/04winter-storm-1/merlin_201354939_4303f9b9-0636-4ef2-ad6c-cbe92330c18f-facebookJumbo.jpg",
-      publishedAt: "2022-02-05T03:53:58Z",
-      content:
-        "Up to an inch of sleet was expected late Friday in parts of northern Connecticut, southeastern Massachusetts and northern Rhode Island, while Portland, Maine, could receive up to two inches. In the B… [+537 chars]",
-    },
-    {
-      source: { id: "reuters", name: "Reuters" },
-      author: null,
-      title:
-        "Amazon is exploring offer for Peloton, source says; report says Nike also weighing bid - Reuters",
-      description:
-        'Peloton Interactive Inc <a href="https://www.reuters.com/companies/PTON.O" target="_blank">(PTON.O)</a> has drawn interest from potential buyers including e-commerce giant Amazon.com Inc , according to a person familiar with the matter, as the exercise bike m…',
-      url: "https://www.reuters.com/business/peloton-draws-interest-potential-suitors-including-amazon-wsj-2022-02-04/",
-      urlToImage:
-        "https://www.reuters.com/resizer/hwgS9mkhdvzSqzipENHjNkhOJ3Y=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/7OCWMHHJNBLVFC3DRE4BSVD6AA.jpg",
-      publishedAt: "2022-02-05T02:38:00Z",
-      content:
-        "Feb 4 (Reuters) - Peloton Interactive Inc (PTON.O) has drawn interest from potential buyers including e-commerce giant Amazon.com Inc , according to a person familiar with the matter, as the exercise… [+3774 chars]",
-    },
-    {
-      source: { id: null, name: "CBS Sports" },
-      author: "",
-      title:
-        "2022 NBA trade deadline: Sixers, Nets plan to discuss a Ben Simmons for James Harden deal, per report - CBS Sports",
-      description:
-        "The Sixers previously planned to wait until the offseason to trade Simmons",
-      url: "https://www.cbssports.com/nba/news/2022-nba-trade-deadline-sixers-nets-plan-to-discuss-a-ben-simmons-for-james-harden-deal-per-report/",
-      urlToImage:
-        "https://sportshub.cbsistatic.com/i/r/2022/02/04/bfc65407-4e1c-4797-b76f-1bfa85ef0bfb/thumbnail/1200x675/af91a61b77e57b3c0bbd726927cf6ba8/untitled-design-2022-02-04t173349-767.png",
-      publishedAt: "2022-02-05T02:32:00Z",
-      content:
-        "It sounds as though the Philadelphia 76ers may not have to wait until the offseason to trade disgruntled star Ben Simmons after all. Recent reports suggested that the Sixers wanted to wait until more… [+3391 chars]",
-    },
-    {
-      source: { id: null, name: "NBCSports.com" },
-      author: "Mike Florio",
-      title:
-        "Dan Snyder’s lawyer denies that Snyder or the team has obstructed the Congressional investigation - NBC Sports",
-      description:
-        "Friday’s letter from Congress to Commissioner Roger Goodell contains some interesting revelations regarding the true nature of Beth Wilkinson’s investigation. The letter also suggests that the league and/or the Washington Commanders are obstructing the Congre…",
-      url: "https://profootballtalk.nbcsports.com/2022/02/04/dan-snyders-lawyer-denies-that-snyder-or-the-team-has-obstructed-the-congressional-investigation/",
-      urlToImage:
-        "https://profootballtalk.nbcsports.com/wp-content/uploads/sites/25/2022/02/GettyImages-1368208407-e1644023167897.jpg",
-      publishedAt: "2022-02-05T01:12:00Z",
-      content:
-        "Fridays letter from Congress to Commissioner Roger Goodell contains some interesting revelations regarding the true nature of Beth Wilkinsons investigation. The letter also suggests that the league a… [+3250 chars]",
-    },
-    {
-      source: { id: null, name: "Bigbrothernetwork.com" },
-      author: null,
-      title:
-        "'Celebrity Big Brother 3' Spoilers: Who Was Voted Out Tonight & Who Won HOH? - Big Brother Network",
-      description:
-        "Celebrity Big Brother returns tonight for a busy episode with two hours of CBB3 fun picking up where the noms left off last night and carrying us through the Veto events, the Mon Won twist, and the…",
-      url: "https://bigbrothernetwork.com/celebrity-big-brother-3-who-was-voted-out-2022-02-04/",
-      urlToImage:
-        "https://bigbrothernetwork.com/wp-content/uploads/2022/02/cbb-splash-00.jpg",
-      publishedAt: "2022-02-05T00:18:44Z",
-      content:
-        "Celebrity Big Brother returns tonight for a busy episode with two hours of CBB3 fun picking up where the noms left off last night and carrying us through the Veto events, the Mon Won twist, and the f… [+3397 chars]",
-    },
-    {
-      source: { id: null, name: "New York Times" },
-      author: "Apoorva Mandavilli",
-      title:
-        "Younger Americans Benefited Less From Booster Shots Than Older People - The New York Times",
-      description:
-        "Among those under age 50, vaccination even without a booster protected strongly against hospitalization and death, according to new C.D.C. data.",
-      url: "https://www.nytimes.com/2022/02/04/health/covid-boosters-older-younger.html",
-      urlToImage:
-        "https://static01.nyt.com/images/2022/02/04/science/04virus-boosters/04virus-boosters-facebookJumbo.jpg",
-      publishedAt: "2022-02-05T00:12:19Z",
-      content:
-        "Unvaccinated people in every age group are at higher risk of infection, hospitalization and death than those who have been immunized, according to the C.D.C.s data a persistent trend ever since vacci… [+1408 chars]",
-    },
-    {
-      source: { id: "business-insider", name: "Business Insider" },
-      author: "Andrea Michelson",
-      title:
-        "Researchers discover HIV variant that's more contagious and more severe circulating in the Netherlands - Yahoo News",
-      description:
-        "A highly aggressive and contagious variant of HIV has been silently spreading in the Netherlands, and researchers have finally identified it.",
-      url: "https://www.businessinsider.com/scientists-discover-hiv-variant-more-contagious-more-severe-2022-2",
-      urlToImage:
-        "https://i.insider.com/61fdb442bd5041001918e1bf?width=1200&format=jpeg",
-      publishedAt: "2022-02-04T23:23:46Z",
-      content:
-        "A highly aggressive and contagious variant of the human immunodeficiency virus (HIV) has been silently spreading in the Netherlands for decades, and researchers have finally identified it.\r\nLike the … [+2357 chars]",
-    },
-    {
-      source: { id: "ars-technica", name: "Ars Technica" },
-      author: "Beth Mole",
-      title:
-        "CDC turns to poop surveillance for future COVID monitoring - Ars Technica",
-      description:
-        "Sewage can detect surges and variants before testing, CDC says.",
-      url: "https://arstechnica.com/science/2022/02/cdc-turns-to-poop-surveillance-for-future-covid-monitoring/",
-      urlToImage:
-        "https://cdn.arstechnica.net/wp-content/uploads/2022/02/GettyImages-129370095-760x380.jpeg",
-      publishedAt: "2022-02-04T23:23:00Z",
-      content:
-        "Enlarge/ Aeration System, Hill Canyon Wastewater Treatment Plant, Camarillo, Ventura County, California.\r\n51 with 38 posters participating\r\nView more stories\r\nThe Centers for Disease Control and Prev… [+4086 chars]",
-    },
-    {
-      source: { id: null, name: "SFGate" },
-      author: "Joshua Bote",
-      title:
-        "Couple rescued after being trapped in remote Sierra cabin for nearly 2 months - SF Gate",
-      description: "Officials say the couple was trapped since Dec. 6.",
-      url: "https://www.sfgate.com/renotahoe/article/Couple-trapped-in-Sierra-cabin-rescued-16832817.php",
-      urlToImage:
-        "https://s.hdnux.com/photos/01/23/70/67/21990884/3/rawImage.jpg",
-      publishedAt: "2022-02-04T22:46:54Z",
-      content:
-        "For almost two months, a couple and their dog had survived, presumably subsisting on stockpiled food and other supplies.The couple whose identity was not disclosed by Sierra County officials was trap… [+1526 chars]",
-    },
-  ];
+  articles = [];
   constructor() {
     super();
     this.state = {
       articles: this.articles,
       loading: false,
+      page: 1,
     };
   }
+  async componentDidMount() {
+    let url =
+      "https://newsapi.org/v2/top-headlines?country=us&apiKey=8a993a4220ec478094b6cc58a3229697&page=1&pageSize=20";
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    console.log(parsedData);
+    this.setState({
+      articles: parsedData.articles,
+      totalResults: parsedData.totalResults,
+    });
+  }
+  handlePrevClick = async () => {
+    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=8a993a4220ec478094b6cc58a3229697&page=${
+      this.state.page + 1
+    }&pageSize=20`;
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    console.log(parsedData);
+    this.setState({
+      page: this.state.page - 1,
+      articles: parsedData.articles,
+    });
+  };
+  handleNextClick = async () => {
+    console.log("Next");
+    if (this.state.page + 1 > Math.ceil(this.state.totalResults / 20)) {
+    } else {
+      let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=8a993a4220ec478094b6cc58a3229697&page=${
+        this.state.page + 1
+      }&pageSize=20`;
+      let data = await fetch(url);
+      let parsedData = await data.json();
+      console.log(parsedData);
+      this.setState({
+        page: this.state.page + 1,
+        articles: parsedData.articles,
+      });
+    }
+  };
   render() {
     return (
       <div className="container my-3">
-        <h2>NewsGo Top Headlines</h2>
+        <h1>NewsGo - Top Headlines</h1>
         <div className="row">
           {this.state.articles.map((element) => {
             return (
               <div className="col-md-4" key={element.url}>
                 <NewsItem
-                  title={element.title.slice(0, 45)}
-                  description={element.description.slice(0, 88)}
+                  title={element.title ? element.title.slice(0, 45) : ""}
+                  description={
+                    element.description ? element.description.slice(0, 88) : ""
+                  }
                   imageUrl={element.urlToImage}
                   newsUrl={element.url}
                 />
               </div>
             );
           })}
+        </div>
+        <div className="py-3 container d-flex justify-content-between">
+          <button
+            disabled={this.state.page <= 1}
+            type="button"
+            className="btn btn-danger"
+            onClick={this.handlePrevClick}
+          >
+            &larr; Previous
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={this.handleNextClick}
+          >
+            Next &rarr;
+          </button>
         </div>
       </div>
     );
