@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import Spinner from "../Spinner";
 import NewsItem from "./NewsItem";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export class News extends Component {
   articles = [];
@@ -9,11 +11,11 @@ export class News extends Component {
       articles: this.articles,
       loading: false,
       page: 1,
+      totalResults: 0,
     };
   }
   async componentDidMount() {
-    let url =
-      "https://newsapi.org/v2/top-headlines?country=us&apiKey=8a993a4220ec478094b6cc58a3229697&page=1&pageSize=20";
+    let url = ` https://newsapi.org/v2/top-headlines?country=us&apiKey=f596bb5265fb4f0686c587a18468fa5f&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
@@ -22,74 +24,54 @@ export class News extends Component {
       totalResults: parsedData.totalResults,
     });
   }
-  handlePrevClick = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=8a993a4220ec478094b6cc58a3229697&page=${
+
+  fetchMoreData = async () => {
+    this.setState({ page: this.state.page + 1 });
+    let url = `https://newsapi.org/v2/everything?q=russia&apiKey=f596bb5265fb4f0686c587a18468fa5f&page=${
       this.state.page + 1
-    }&pageSize=20`;
+    }&pageSize=${this.props.pageSize}`;
+    this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
     this.setState({
-      page: this.state.page - 1,
-      articles: parsedData.articles,
+      articles: this.state.articles.concat(parsedData.articles),
+      totalResults: parsedData.totalResults,
+      loading: false,
     });
   };
-  handleNextClick = async () => {
-    console.log("Next");
-    if (this.state.page + 1 > Math.ceil(this.state.totalResults / 20)) {
-    } else {
-      let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=8a993a4220ec478094b6cc58a3229697&page=${
-        this.state.page + 1
-      }&pageSize=20`;
-      let data = await fetch(url);
-      let parsedData = await data.json();
-      console.log(parsedData);
-      this.setState({
-        page: this.state.page + 1,
-        articles: parsedData.articles,
-      });
-    }
-  };
+
   render() {
     return (
       <div className="container my-3">
         <h1 className="text-center">NewsGo - Top Headlines</h1>
-        <div className="row">
-          {this.state.articles.map((element) => {
-            return (
-              <div className="col-md-4" key={element.url}>
-                <NewsItem
-                  title={element.title ? element.title.slice(0, 45) : ""}
-                  description={
-                    element.description ? element.description.slice(0, 88) : ""
-                  }
-                  imageUrl={element.urlToImage}
-                  newsUrl={element.url}
-                />
-              </div>
-            );
-          })}
-        </div>
-        <div className="py-3 container d-flex justify-content-between">
-          <button
-            disabled={this.state.page <= 1}
-            type="button"
-            className="btn btn-danger"
-            onClick={this.handlePrevClick}
-          >
-            &larr; Previous
-          </button>
-          <button
-            disabled={
-              this.state.page + 1 > Math.ceil(this.state.totalResults / 20)
-            }
-            type="button"
-            className="btn btn-danger"
-            onClick={this.handleNextClick}
-          >
-            Next &rarr;
-          </button>
-        </div>
+        <InfiniteScroll
+          dataLength={this.state.articles.length}
+          next={this.fetchMoreData}
+          hasMore={this.state.articles.length !== this.state.totalResults}
+          loader={<Spinner />}
+        >
+          <div className="container my-3">
+            <div className="row">
+              {this.state.articles.map((element) => {
+                return (
+                  <div className="col-md-4" key={element.url}>
+                    <NewsItem
+                      title={element.title ? element.title.slice(0, 45) : ""}
+                      description={
+                        element.description
+                          ? element.description.slice(0, 88)
+                          : ""
+                      }
+                      imageUrl={element.urlToImage}
+                      newsUrl={element.url}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </InfiniteScroll>
       </div>
     );
   }
